@@ -8,27 +8,27 @@
 
 import UIKit
 
-@IBDesignable class LineView: UIView {
+@IBDesignable public class LineView: UIView {
     
-    @IBInspectable var lineColor: UIColor! = .white {
+    @IBInspectable public var lineColor: UIColor! = .white {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var spacing: Double = 32 {
+    @IBInspectable public var spacing: Double = 32 {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var lineWidth: CGFloat = 1 {
+    @IBInspectable public var lineWidth: CGFloat = 1 {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var isVertical: Bool = false {
+    @IBInspectable public var isVertical: Bool = false {
         didSet {
             self.setNeedsDisplay()
         }
@@ -36,15 +36,15 @@ import UIKit
     
     private var pattern: CAShapeLayer!
     
-    override class var layerClass: AnyClass {
+    public override class var layerClass: AnyClass {
         return CAReplicatorLayer.self
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
     
@@ -82,7 +82,7 @@ import UIKit
         self.layer.addSublayer(line)
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         self._redraw()
     }

@@ -8,38 +8,38 @@
 
 import UIKit
 
-@IBDesignable class DotView: UIView {
+@IBDesignable public class DotView: UIView {
     
-    @IBInspectable var dotColor: UIColor! = .white {
+    @IBInspectable public var dotColor: UIColor! = .white {
         didSet {
             self.pattern.fillColor = dotColor.cgColor
             self.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var spacing: Double = 4 {
+    @IBInspectable public var spacing: Double = 4 {
         didSet {
             self.setNeedsDisplay()
         }
     }
     
-    @IBInspectable var dotSize: Double = 4 {
+    @IBInspectable public var dotSize: Double = 4 {
         didSet {
             self.setNeedsDisplay()
         }
     }
     private var pattern: CAShapeLayer!
     
-    override class var layerClass: AnyClass {
+    public override class var layerClass: AnyClass {
         return CAReplicatorLayer.self
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         _setup()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         _setup()
     }
@@ -71,7 +71,7 @@ import UIKit
         pattern = circle
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         self._redraw()
     }

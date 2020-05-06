@@ -8,21 +8,21 @@
 
 import UIKit
 
-class ChecksView: UIView {
+@IBDesignable public class ChecksView: UIView {
     
-    @IBInspectable var size: Double = 32 {
+    @IBInspectable public var size: Double = 32 {
         didSet {
             self.setNeedsLayout()
         }
     }
     
-    @IBInspectable var lineColor: UIColor! = .white {
+    @IBInspectable public var lineColor: UIColor! = .white {
         didSet {
             self.setNeedsLayout()
         }
     }
     
-    @IBInspectable var lineWidth: CGFloat = 1 {
+    @IBInspectable public var lineWidth: CGFloat = 1 {
         didSet {
             self.setNeedsLayout()
         }
@@ -31,12 +31,12 @@ class ChecksView: UIView {
     private weak var horizontalLineView: LineView!
     private weak var verticalLineView: LineView!
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self._setup()
     }
     
-    required init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         self._setup()
     }
@@ -56,7 +56,7 @@ class ChecksView: UIView {
                         
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         
         self.horizontalLineView.frame = self.bounds
