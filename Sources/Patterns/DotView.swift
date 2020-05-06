@@ -12,20 +12,19 @@ import UIKit
     
     @IBInspectable public var dotColor: UIColor! = .white {
         didSet {
-            self.pattern.fillColor = dotColor.cgColor
-            self.setNeedsDisplay()
+            self.setNeedsLayout()
         }
     }
     
     @IBInspectable public var spacing: Double = 4 {
         didSet {
-            self.setNeedsDisplay()
+            self.setNeedsLayout()
         }
     }
     
     @IBInspectable public var dotSize: Double = 4 {
         didSet {
-            self.setNeedsDisplay()
+            self.setNeedsLayout()
         }
     }
     private var pattern: CAShapeLayer!
@@ -48,26 +47,30 @@ import UIKit
         for layer in self.layer.sublayers ?? [] {
             layer.removeFromSuperlayer()
         }
+        let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: dotSize, height: dotSize))
+        pattern.fillColor = self.dotColor.cgColor
+        pattern.path = path.cgPath
+        
         let horizontal = CAReplicatorLayer()
+        horizontal.shouldRasterize = true
         horizontal.addSublayer(pattern)
-        let translateFactor = spacing
+        let translateFactor = dotSize + spacing
         let count = Int(Double(self.bounds.width) / spacing) + 1
-        let transform = CATransform3DTranslate(CATransform3DIdentity, CGFloat(translateFactor), 0, 1.0);
+        let transform = CATransform3DTranslate(CATransform3DIdentity, CGFloat(translateFactor), 0, 0.0);
         horizontal.instanceTransform = transform
         horizontal.instanceCount = count
         let vcount = Int(Double(self.bounds.height) / spacing) + 1
-        let vTransform = CATransform3DTranslate(CATransform3DIdentity, 0.0, CGFloat(translateFactor), 1.0);
+        let vTransform = CATransform3DTranslate(CATransform3DIdentity, 0.0, CGFloat(translateFactor), 0.0);
         
         (self.layer as? CAReplicatorLayer)?.instanceCount = vcount
         (self.layer as? CAReplicatorLayer)?.instanceTransform = vTransform
         self.layer.addSublayer(horizontal)
+        
     }
     
     private func _setup() {
         let circle = CAShapeLayer()
-        let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: dotSize, height: dotSize))
-        circle.fillColor = self.dotColor.cgColor
-        circle.path = path.cgPath
+        circle.shouldRasterize = true
         pattern = circle
     }
     
