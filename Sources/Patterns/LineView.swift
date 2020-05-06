@@ -57,20 +57,19 @@ import UIKit
         line.strokeColor = self.lineColor.cgColor
         line.lineWidth = self.lineWidth
         let path = UIBezierPath()
-        
-        
-        path.move(to: .zero)
-        
         let count: Int
         let transform: CATransform3D
+        let transformFactor = spacing + Double(lineWidth)
         if isVertical {
-            path.addLine(to: .init(x: 0, y: self.bounds.maxY))
-            count = Int(Double(self.bounds.width) / spacing) + 1
-            transform = CATransform3DTranslate(CATransform3DIdentity, CGFloat(spacing), 0.0, 1.0);
+            path.move(to: .init(x: lineWidth/2.0, y: 0))
+            path.addLine(to: .init(x: lineWidth/2.0, y: self.bounds.maxY))
+            count = Int(Double(self.bounds.width) / transformFactor) + 1
+            transform = CATransform3DTranslate(CATransform3DIdentity, CGFloat(transformFactor), 0.0, 0.0);
         } else {
-            path.addLine(to: .init(x: self.bounds.maxX, y: 0))
-            count = Int(Double(self.bounds.height) / spacing) + 1
-            transform = CATransform3DTranslate(CATransform3DIdentity, 0.0, CGFloat(spacing), 1.0);
+            path.move(to: .init(x: 0, y: lineWidth/2))
+            path.addLine(to: .init(x: self.bounds.maxX, y: lineWidth/2))
+            count = Int(Double(self.bounds.height) / transformFactor) + 1
+            transform = CATransform3DTranslate(CATransform3DIdentity, 0.0, CGFloat(transformFactor), 0.0);
             
         }
                 
