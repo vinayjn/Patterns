@@ -122,7 +122,27 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CKo-Kl-MRO" customClass="DotView" customModule="Patterns">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW4-6f-YYQ">
+                                        <rect key="frame" x="170" y="427.5" width="74" height="41"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build Something Great Today!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kS-Mt-RhW">
+                                        <rect key="frame" x="110" y="468.5" width="194.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="5kS-Mt-RhW" firstAttribute="top" secondItem="PW4-6f-YYQ" secondAttribute="bottom" id="2M1-fd-qK2"/>
+                                    <constraint firstItem="PW4-6f-YYQ" firstAttribute="centerY" secondItem="CKo-Kl-MRO" secondAttribute="centerY" id="EMI-Ck-MVW"/>
+                                    <constraint firstItem="5kS-Mt-RhW" firstAttribute="centerX" secondItem="CKo-Kl-MRO" secondAttribute="centerX" id="Xrb-E5-dzD"/>
+                                    <constraint firstItem="PW4-6f-YYQ" firstAttribute="centerX" secondItem="CKo-Kl-MRO" secondAttribute="centerX" id="eZv-Xg-RcU"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="dotColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -131,33 +151,17 @@
                                         <real key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="dotSize">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PW4-6f-YYQ">
-                                <rect key="frame" x="170" y="427.5" width="74" height="41"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build Something Great Today!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kS-Mt-RhW">
-                                <rect key="frame" x="110" y="468.5" width="194.5" height="19.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="PW4-6f-YYQ" firstAttribute="centerX" secondItem="DGH-Fp-yDe" secondAttribute="centerX" id="1AE-jm-fRO"/>
                             <constraint firstAttribute="trailing" secondItem="CKo-Kl-MRO" secondAttribute="trailing" id="Ent-g2-nCV"/>
-                            <constraint firstItem="5kS-Mt-RhW" firstAttribute="top" secondItem="PW4-6f-YYQ" secondAttribute="bottom" id="ZJW-Q9-F96"/>
                             <constraint firstItem="CKo-Kl-MRO" firstAttribute="leading" secondItem="DGH-Fp-yDe" secondAttribute="leading" id="fZ9-n4-nbT"/>
                             <constraint firstAttribute="bottom" secondItem="CKo-Kl-MRO" secondAttribute="bottom" id="gTp-tH-pYr"/>
                             <constraint firstItem="CKo-Kl-MRO" firstAttribute="top" secondItem="DGH-Fp-yDe" secondAttribute="top" id="jR3-aa-Fmi"/>
-                            <constraint firstItem="5kS-Mt-RhW" firstAttribute="centerX" secondItem="DGH-Fp-yDe" secondAttribute="centerX" id="p07-Hg-cTg"/>
-                            <constraint firstItem="PW4-6f-YYQ" firstAttribute="centerY" secondItem="DGH-Fp-yDe" secondAttribute="centerY" id="yJQ-Mc-26x"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="2dt-Se-niV"/>
                     </view>
@@ -263,40 +267,44 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N6u-Z1-Y39" customClass="LineView" customModule="Patterns">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYC-Sw-0wm">
+                                        <rect key="frame" x="170" y="427.5" width="74" height="41"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build Something Great Today!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eft-aJ-6Ph">
+                                        <rect key="frame" x="110" y="468.5" width="194.5" height="19.5"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="eft-aJ-6Ph" firstAttribute="top" secondItem="PYC-Sw-0wm" secondAttribute="bottom" id="ANu-dj-XRh"/>
+                                    <constraint firstItem="PYC-Sw-0wm" firstAttribute="centerX" secondItem="N6u-Z1-Y39" secondAttribute="centerX" id="HWA-jo-yig"/>
+                                    <constraint firstItem="PYC-Sw-0wm" firstAttribute="centerY" secondItem="N6u-Z1-Y39" secondAttribute="centerY" id="QKO-gx-VWN"/>
+                                    <constraint firstItem="eft-aJ-6Ph" firstAttribute="centerX" secondItem="N6u-Z1-Y39" secondAttribute="centerX" id="r8T-WY-H14"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="isVertical" value="YES"/>
                                     <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="1"/>
+                                        <real key="value" value="2"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="spacing">
                                         <real key="value" value="32"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYC-Sw-0wm">
-                                <rect key="frame" x="170" y="427.5" width="74" height="41"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="30"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Build Something Great Today!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eft-aJ-6Ph">
-                                <rect key="frame" x="110" y="468.5" width="194.5" height="19.5"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="14"/>
-                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="N6u-Z1-Y39" firstAttribute="leading" secondItem="Gu1-2N-aaS" secondAttribute="leading" id="CbZ-kj-bu7"/>
-                            <constraint firstItem="eft-aJ-6Ph" firstAttribute="centerX" secondItem="Gu1-2N-aaS" secondAttribute="centerX" id="EqK-4W-ixn"/>
                             <constraint firstAttribute="bottom" secondItem="N6u-Z1-Y39" secondAttribute="bottom" id="I8T-df-4ua"/>
                             <constraint firstAttribute="trailing" secondItem="N6u-Z1-Y39" secondAttribute="trailing" id="IDA-oP-Xsn"/>
-                            <constraint firstItem="eft-aJ-6Ph" firstAttribute="top" secondItem="PYC-Sw-0wm" secondAttribute="bottom" id="NdO-cT-cDB"/>
                             <constraint firstItem="N6u-Z1-Y39" firstAttribute="top" secondItem="Gu1-2N-aaS" secondAttribute="top" id="SgM-jz-cma"/>
-                            <constraint firstItem="PYC-Sw-0wm" firstAttribute="centerX" secondItem="Gu1-2N-aaS" secondAttribute="centerX" id="rn5-hs-Cfa"/>
-                            <constraint firstItem="PYC-Sw-0wm" firstAttribute="centerY" secondItem="Gu1-2N-aaS" secondAttribute="centerY" id="zEp-ak-QxZ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mf8-Gn-UM5"/>
                     </view>
