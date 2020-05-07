@@ -28,6 +28,8 @@ import UIKit
         }
     }
     private var pattern: CAShapeLayer!
+    private weak var hReplicator: CAReplicatorLayer!
+    private weak var vReplicator: CAReplicatorLayer!
     
     public override class var layerClass: AnyClass {
         return CAReplicatorLayer.self
@@ -35,47 +37,53 @@ import UIKit
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        _setup()
+        self._setup()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
-        _setup()
-    }
-    
-    private func _redraw() {
-        for layer in self.layer.sublayers ?? [] {
-            layer.removeFromSuperlayer()
-        }
-        let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: dotSize, height: dotSize))
-        pattern.fillColor = self.dotColor.cgColor
-        pattern.path = path.cgPath
-        
-        let horizontal = CAReplicatorLayer()
-        horizontal.shouldRasterize = true
-        horizontal.addSublayer(pattern)
-        let translateFactor = dotSize + spacing
-        let count = Int(Double(self.bounds.width) / spacing) + 1
-        let transform = CATransform3DTranslate(CATransform3DIdentity, CGFloat(translateFactor), 0, 0.0);
-        horizontal.instanceTransform = transform
-        horizontal.instanceCount = count
-        let vcount = Int(Double(self.bounds.height) / spacing) + 1
-        let vTransform = CATransform3DTranslate(CATransform3DIdentity, 0.0, CGFloat(translateFactor), 0.0);
-        
-        (self.layer as? CAReplicatorLayer)?.instanceCount = vcount
-        (self.layer as? CAReplicatorLayer)?.instanceTransform = vTransform
-        self.layer.addSublayer(horizontal)
-        
+        self._setup()
     }
     
     private func _setup() {
         let circle = CAShapeLayer()
         circle.shouldRasterize = true
-        pattern = circle
+        
+        let horizontal = CAReplicatorLayer()
+        horizontal.shouldRasterize = true
+        horizontal.addSublayer(circle)
+        self.pattern = circle
+        
+        let vertical = CAReplicatorLayer()
+        vertical.addSublayer(horizontal)
+        
+        self.hReplicator = horizontal
+        
+        self.layer.insertSublayer(vertical, at: 0)
+        self.vReplicator = vertical
+    }
+    
+    private func _redraw() {
+        
+        let path = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: dotSize, height: dotSize))
+        pattern.fillColor = self.dotColor.cgColor
+        pattern.path = path.cgPath
+                
+        let translateFactor = dotSize + spacing
+        let count = Int(Double(self.bounds.width) / spacing) + 1
+        let transform = CATransform3DTranslate(CATransform3DIdentity, CGFloat(translateFactor), 0, 0.0);
+        hReplicator.instanceTransform = transform
+        hReplicator.instanceCount = count
+        let vcount = Int(Double(self.bounds.height) / spacing) + 1
+        let vTransform = CATransform3DTranslate(CATransform3DIdentity, 0.0, CGFloat(translateFactor), 0.0);
+        
+        vReplicator.instanceCount = vcount
+        vReplicator.instanceTransform = vTransform
     }
     
     public override func layoutSubviews() {
-        super.layoutSubviews()
+        self.vReplicator.frame = self.bounds
         self._redraw()
+        super.layoutSubviews()
     }
 }

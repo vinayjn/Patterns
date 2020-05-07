@@ -12,50 +12,53 @@ import UIKit
     
     @IBInspectable public var lineColor: UIColor! = .white {
         didSet {
-            self.setNeedsDisplay()
+            self.setNeedsLayout()
         }
     }
     
     @IBInspectable public var spacing: Double = 32 {
         didSet {
-            self.setNeedsDisplay()
+            self.setNeedsLayout()
         }
     }
     
     @IBInspectable public var lineWidth: CGFloat = 1 {
         didSet {
-            self.setNeedsDisplay()
+            self.setNeedsLayout()
         }
     }
     
     @IBInspectable public var isVertical: Bool = false {
         didSet {
-            self.setNeedsDisplay()
+            self.setNeedsLayout()
         }
     }
     
-    private var pattern: CAShapeLayer!
-    
-    public override class var layerClass: AnyClass {
-        return CAReplicatorLayer.self
-    }
+    private weak var pattern: CAShapeLayer!
+    private weak var replicator: CAReplicatorLayer!
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        self._setup()
     }
     
     public required init?(coder: NSCoder) {
         super.init(coder: coder)
+        self._setup()
+    }
+    
+    private func _setup() {
+        let pattern = CAShapeLayer()
+        
+        let replicator = CAReplicatorLayer()
+        replicator.addSublayer(pattern)
+        self.pattern = pattern        
+        self.layer.insertSublayer(replicator, at: 0)
+        self.replicator = replicator
     }
     
     private func _redraw() {
-        for layer in self.layer.sublayers ?? [] {
-            layer.removeFromSuperlayer()
-        }
-        
-        let line = CAShapeLayer()
-        line.strokeColor = self.lineColor.cgColor
-        line.lineWidth = self.lineWidth
+
         let path = UIBezierPath()
         let count: Int
         let transform: CATransform3D
@@ -70,19 +73,17 @@ import UIKit
             path.addLine(to: .init(x: self.bounds.maxX, y: lineWidth/2))
             count = Int(Double(self.bounds.height) / transformFactor) + 1
             transform = CATransform3DTranslate(CATransform3DIdentity, 0.0, CGFloat(transformFactor), 0.0);
-            
         }
-                
-        line.path = path.cgPath
-
-        (self.layer as? CAReplicatorLayer)?.instanceCount = count
-        (self.layer as? CAReplicatorLayer)?.instanceTransform = transform
-                
-        self.layer.addSublayer(line)
+        pattern.strokeColor = self.lineColor.cgColor
+        pattern.lineWidth = self.lineWidth
+        pattern.path = path.cgPath
+        replicator.instanceCount = count
+        replicator.instanceTransform = transform
     }
     
     public override func layoutSubviews() {
-        super.layoutSubviews()
+        self.replicator.frame = self.bounds
         self._redraw()
+        super.layoutSubviews()
     }
 }

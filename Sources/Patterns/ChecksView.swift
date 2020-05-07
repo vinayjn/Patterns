@@ -51,9 +51,7 @@ import UIKit
         vLineView.backgroundColor = .clear
         vLineView.isVertical = true
         self.addSubview(vLineView)
-        self.verticalLineView = vLineView
-        
-                        
+        self.verticalLineView = vLineView                                
     }
     
     public override func layoutSubviews() {
