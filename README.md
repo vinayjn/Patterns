@@ -1,4 +1,4 @@
-![Patterns](./extras/patterns.png)
+![Patterns](https://raw.githubusercontent.com/vinayjn/Patterns/master/extras/patterns.png)
 
 
 Patterns is an easy to use, pure-Swift library for drawing patterns so that you don't have to ship iOS apps with blank backgrounds. 
@@ -11,7 +11,7 @@ To ease the usage with interface builders, all of the patterns are made `@IBDesi
 The simplest use-case is using a pattern as background for your views. 
 
 
-![Dots](./extras/dots.png)
+![Dots](https://raw.githubusercontent.com/vinayjn/Patterns/master/extras/dots.png)
 
 ```
 
@@ -29,7 +29,7 @@ dotView.pinTo(self.view, insets: .zero)
 
 Combining patterns and masking text and other shapes.
 
-![Masks](./extras/mask.png)
+![Masks](https://raw.githubusercontent.com/vinayjn/Patterns/master/extras/mask.png)
 
 ```
 
@@ -78,9 +78,19 @@ From Xcode 11, you can use [Swift Package Manager](https://swift.org/package-man
 If you encounter any problem or have a question on adding the package to an Xcode project, I suggest reading the [Adding Package Dependencies to Your App](https://developer.apple.com/documentation/xcode/adding_package_dependencies_to_your_app) guide article from Apple.
 
 
+### Cocoapods
+
+Add `patterns-swift` to your Podfile.
+
+```
+pod 'patterns-swift'
+
+```
+
+
 ## TODOs
 
-- [ ] Cocoapods and Carthage support
+- [ ] Carthage support
 - [ ] Diagonal drawing(lines and stripes)
 - [ ] Animations
 - [ ] Documentation
