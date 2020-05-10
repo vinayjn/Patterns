@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
-  s.name         = "Patterns"
-  s.version      = "0.0.1"
+  s.name         = "patterns-swift"
+  s.version      = "0.0.2"
   s.summary      = "Patterns is an easy to use, pure-Swift library for drawing patterns."
   s.description  = <<-DESC
     Patterns is an easy to use, pure-Swift library for drawing patterns so that you don't have to ship iOS apps with blank backgrounds.
